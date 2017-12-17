@@ -7,13 +7,13 @@ public class Hacker : MonoBehaviour {
     // Use this for initialization
     void Start() {
         print("Buradayim konsol!");
-        showMainmenu();
+        showMainmenu("Berke");
     }
 
-    void showMainmenu()
+    void showMainmenu(string name)
     {
         Terminal.ClearScreen();
-        Terminal.WriteLine("ITerminal Since 1968.\n\nPress 1 for your own terminal.\nPress 2 for NASA.\nPress 3 for Black Rainbow.");
+        Terminal.WriteLine("Hi "+ name + "!\nITerminal Since 1968.\n\nChoose what to hack into.\nPress 1 for your own terminal.\nPress 2 for NASA.\nPress 3 for Black Rainbow.");
     }
 
 

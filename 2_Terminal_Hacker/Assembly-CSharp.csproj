@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\WM2000\Display\Display.cs" />
+     <Compile Include="Assets\WM2000\Hacker.cs" />
      <Compile Include="Assets\WM2000\Keyboard\Keyboard.cs" />
      <Compile Include="Assets\WM2000\Terminal\DisplayBuffer.cs" />
      <Compile Include="Assets\WM2000\Terminal\InputBuffer.cs" />

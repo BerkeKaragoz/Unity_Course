@@ -31,6 +31,16 @@ public class RocketController : MonoBehaviour
         //   DebugLog();
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Safe": print("Safe"); break; 
+            case "Resource": print("Resource"); break;
+            default: print("Ded"); break;
+        }
+    }
+
     private void Rotate()
     {
         if (Input.GetKey(KeyCode.D))

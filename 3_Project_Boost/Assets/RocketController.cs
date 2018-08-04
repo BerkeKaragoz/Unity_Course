@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿//using System;
+//using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RocketController : MonoBehaviour
 {
@@ -37,7 +38,12 @@ public class RocketController : MonoBehaviour
         {
             case "Safe": print("Safe"); break; 
             case "Resource": print("Resource"); break;
-            default: print("Ded"); break;
+            case "Finish": print("Finish");
+                SceneManager.LoadScene(1);
+                break;
+            default: print("Ded");
+                SceneManager.LoadScene(0);
+                break;
         }
     }
 

@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 1ede6792f303fd64f9c7ff8ac2b95952
+  productGUID: 79d79f7c3c491284e9140c779d71f3bf
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -650,8 +650,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 2d408742-b4f2-4162-967e-935a8abd02f1
-  projectName: AsteraX - EBK Version
+  cloudProjectId: fee700dd-d51d-4933-abaa-8523342b8041
+  projectName: AsteraX - EBK Version (1)
   organizationId: e-berke-karag-z
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

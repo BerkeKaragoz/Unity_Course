@@ -651,7 +651,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: fee700dd-d51d-4933-abaa-8523342b8041
-  projectName: AsteraX - EBK Version (1)
+  projectName: AsteraX - EBK Version
   organizationId: e-berke-karag-z
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

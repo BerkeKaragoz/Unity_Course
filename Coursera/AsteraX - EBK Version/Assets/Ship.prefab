@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 23619236841827302}
   - component: {fileID: 136050841930677352}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Weapon Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,11 +57,9 @@ GameObject:
   - component: {fileID: 4857242344403998}
   - component: {fileID: 54430001359202496}
   - component: {fileID: 114315168079117794}
-  - component: {fileID: 114520757714430388}
-  - component: {fileID: 114642443274029558}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +77,21 @@ GameObject:
   - component: {fileID: 136966074451819730}
   m_Layer: 0
   m_Name: Tail Wing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1675033349148852
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4053398266051466}
+  m_Layer: 0
+  m_Name: Projectile Exit Location
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +148,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4053398266051466
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675033349148852}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4583391912022994}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4113698708331012
 Transform:
   m_ObjectHideFlags: 1
@@ -142,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1754768101583266}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.147, z: 0.375}
+  m_LocalPosition: {x: 0, y: 0.28800002, z: 0.375}
   m_LocalScale: {x: 0.68705, y: 0.6870502, z: 0.6870502}
   m_Children: []
   m_Father: {fileID: 4857242344403998}
@@ -155,11 +181,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073376234287596}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.141, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4857242344403998}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4583391912022994
 Transform:
@@ -168,12 +194,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800374977504268}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.189, z: 1.035}
+  m_LocalPosition: {x: 0, y: 0, z: 1.035}
   m_LocalScale: {x: 0.24738, y: 0.24738012, z: 0.24738012}
   m_Children:
+  - {fileID: 4053398266051466}
   - {fileID: 4851302684013950}
   m_Father: {fileID: 4857242344403998}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4851302684013950
 Transform:
@@ -186,7 +213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4583391912022994}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4857242344403998
 Transform:
@@ -200,9 +227,9 @@ Transform:
   m_Children:
   - {fileID: 4113698708331012}
   - {fileID: 4957015987242196}
+  - {fileID: 4978128975889434}
   - {fileID: 4316832026872870}
   - {fileID: 4583391912022994}
-  - {fileID: 4978128975889434}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -213,7 +240,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1910314978264860}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.141, z: 0}
   m_LocalScale: {x: 0.6, y: 1.5, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4857242344403998}
@@ -226,11 +253,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1668249897206580}
   m_LocalRotation: {x: -0.15760565, y: 0.68931884, z: -0.15760562, w: 0.68931884}
-  m_LocalPosition: {x: 0, y: 0.167, z: -0.686}
+  m_LocalPosition: {x: 0, y: 0.308, z: -0.686}
   m_LocalScale: {x: 0.59999996, y: 0.5, z: 0.099999994}
   m_Children: []
   m_Father: {fileID: 4857242344403998}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: -25.757002}
 --- !u!23 &23193264724007794
 MeshRenderer:
@@ -468,33 +495,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec215079acb9854b8a2b821db7d67c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 2500
---- !u!114 &114520757714430388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1526426766990546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46c4a2f88175147409ab358bedc450ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114642443274029558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1526426766990546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d58bebbdb229b44fbb34f3aee07122d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 54463335141037080, guid: fbf136d6a7bc5634d91c35811e54ff91,
     type: 2}
-  ExitLocation: {fileID: 4851302684013950}
-  ProjectileSpeed: 500
+  ExitLocation: {fileID: 4053398266051466}
+  SpeedMultiplier: 2500
+  ProjectileSpeed: 15
 --- !u!136 &136050841930677352
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -503,7 +508,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1217511572965410}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1

@@ -9,13 +9,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float SpeedMultiplier = 2500f;
-
+    [SerializeField]
+    int ProjectileSpeed = 500;
 
     private Rigidbody player;
     private Camera mainCamera;
     private RaycastHit hit;
     private Vector3 aimPoint = new Vector3(0, 0, 0);
-    private ProjectileShooter Shooter = new ProjectileShooter(ProjectilePrefab, ExitLocation);
 
     // Use this for initialization
     void Start()
@@ -32,21 +32,17 @@ public class PlayerController : MonoBehaviour
         transform.LookAt(aimPoint, Vector3.up);//Looks at the mouse
         Move();
 
-        if (Input.GetButton("Fire1"))
-            Shooter.Shoot();
+        if (Input.GetButtonDown("Fire1"))
+            Shoot();
     }
 
     public void Move()
     {
         player.AddForce(0, 0, Input.GetAxisRaw("Vertical") * SpeedMultiplier * Time.deltaTime);
         player.AddForce(Input.GetAxisRaw("Horizontal") * SpeedMultiplier * Time.deltaTime, 0, 0);
-
-        //this.transform.SetPositionAndRotation(this.transform.position, Quaternion.Euler(this.transform.rotation.x + 20f * Input.GetAxis("Vertical"), this.transform.rotation.y, this.transform.rotation.z + 20f * -Input.GetAxis("Horizontal")));
-
+        
         this.transform.SetPositionAndRotation(this.transform.position, new Quaternion(Mathf.PI * Input.GetAxis("Vertical") / 12, this.transform.rotation.y, Mathf.PI * -Input.GetAxis("Horizontal") / 12, this.transform.rotation.w));
-
-        print(this.transform.rotation);
-
+        //print(this.transform.rotation);
     }
 
     public Vector3 getAimPoint()
@@ -64,5 +60,10 @@ public class PlayerController : MonoBehaviour
         return aimPoint;
     }
 
+    public void Shoot()
+    {
+        Rigidbody Projectile = Instantiate(ProjectilePrefab, new Vector3(ExitLocation.position.x, 0, ExitLocation.position.z), ExitLocation.rotation) as Rigidbody;
+        Projectile.AddRelativeForce(Vector3.forward * ProjectileSpeed);
+    }
 }
 

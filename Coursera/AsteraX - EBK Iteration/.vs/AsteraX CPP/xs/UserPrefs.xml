@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{EA175986-445A-EA41-4831-F4DE683A4665}|">
+  <MonoDevelop.Ide.ItemProperties.AsteraX_220CPP PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/__Scripts/TitleScreenPanel.cs">
+    <Files>
+      <File FileName="Assets/__Scripts/Bullet.cs" Line="16" Column="67" />
+      <File FileName="Assets/__Scripts/AsteraX.cs" Line="572" Column="46" />
+      <File FileName="Assets/__Scripts/AchievementManager.cs" Line="143" Column="30" />
+      <File FileName="Assets/__Scripts/AchievementPopUp.cs" Line="38" Column="13" />
+      <File FileName="Assets/__Scripts/SaveGameManager.cs" Line="72" Column="2" />
+      <File FileName="Assets/__Scripts/Vector3Extensions.cs" Line="26" Column="42" />
+      <File FileName="Assets/__Scripts/OffScreenWrapper.cs" Line="37" Column="50" />
+      <File FileName="Assets/__Scripts/ScreenBounds.cs" Line="74" Column="34" />
+      <File FileName="Assets/__Scripts/AsteroidsScriptableObject.cs" Line="8" Column="46" />
+      <File FileName="Assets/__Scripts/Asteroid.cs" Line="213" Column="1" />
+      <File FileName="Assets/__Scripts/GameOverPanel.cs" Line="23" Column="92" />
+      <File FileName="Assets/__Scripts/LevelAdvancePanel.cs" Line="8" Column="21" />
+      <File FileName="Assets/__Scripts/TiltWithVelocity.cs" Line="29" Column="1" />
+      <File FileName="Assets/__Scripts/ScaleSpriteToFillOrthographicCamera.cs" Line="6" Column="31" />
+      <File FileName="Assets/__Scripts/PlayerShip.cs" Line="83" Column="9" />
+      <File FileName="Assets/__Scripts/LivesGT.cs" Line="6" Column="14" />
+      <File FileName="Assets/__Scripts/TitleScreenPanel.cs" Line="5" Column="30" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="AsteraX CPP" expanded="True">
+            <Node name="AsteraX CPP" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

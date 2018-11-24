@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4149291233437366}
   - component: {fileID: 33271915994852430}
+  - component: {fileID: 135503362418214850}
   - component: {fileID: 23010514723128518}
   m_Layer: 8
   m_Name: asteroids_ship0
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472542294352466}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &135503362418214850
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1472542294352466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{EA24B33B-6DBB-82D5-A371-50F70FA93BE6}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/__Scripts/PlayerShip.cs">
+    <Files>
+      <File FileName="Assets/__Scripts/AsteraX.cs" Line="55" Column="1" />
+      <File FileName="Assets/__Scripts/ScreenBounds.cs" Line="30" Column="17" />
+      <File FileName="Assets/__Scripts/PlayerShip.cs" Line="32" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AsteraX_220UCP_220Video_22011_220-_220Asteroids_220Complete PreferredExecutionTarget="Unity.Editor" />
+</Properties>

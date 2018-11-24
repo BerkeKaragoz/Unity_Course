@@ -1,53 +1,143 @@
-﻿using System.Collections;
+﻿//#define DEBUG_PlayerShip_RespawnNotifications
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(Rigidbody))]
-
 public class PlayerShip : MonoBehaviour
 {
-
-    [SerializeField]
-    private float SpeedMultiplier = 2500f;
-
-    private Rigidbody player;
-    public Rigidbody ProjectilePrefab;
-    public Transform ExitLocation;
-    public Transform Anchor;
-
-    // Use this for initialization
-    void Start()
+    // This is a somewhat protected private singleton for PlayerShip
+    static private PlayerShip   _S;
+    static public PlayerShip    S
     {
-        player = GetComponent<Rigidbody>();
+        get
+        {
+            return _S;
+        }
+        private set
+        {
+            if (_S != null)
+            {
+                Debug.LogWarning("Second attempt to set PlayerShip singleton _S.");
+            }
+            _S = value;
+        }
     }
 
-    // Update is called once per frame
+    [Header("Set in Inspector")]
+    public float        shipSpeed = 10f;
+    public GameObject   bulletPrefab;
+    public int          secondsToWaitBeforeJump = 2;
+
+    private bool _collisionFlag = false; //To avoid removing double jumps
+    Rigidbody           rigid;
+
+
+    void Awake()
+    {
+        S = this;
+
+        // NOTE: We don't need to check whether or not rigid is null because of [RequireComponent()] above
+        rigid = GetComponent<Rigidbody>();
+    }
+
+
     void Update()
     {
-        Move();
+        // Using Horizontal and Vertical axes to set velocity
+        float aX = CrossPlatformInputManager.GetAxis("Horizontal");
+        float aY = CrossPlatformInputManager.GetAxis("Vertical");
 
-        if (Input.GetButtonDown("Fire1"))
-            Shoot();
+        Vector3 vel = new Vector3(aX, aY);
+        if (vel.magnitude > 1)
+        {
+            // Avoid speed multiplying by 1.414 when moving at a diagonal
+            vel.Normalize();
+        }
+
+        rigid.velocity = vel * shipSpeed;
+
+        // Mouse input for firing
+        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+        {
+            Fire();
+        }
+
+        _collisionFlag = false;
     }
 
-    public void Move()
-    {
-        player.AddForce(0,  Input.GetAxisRaw("Vertical") * SpeedMultiplier * Time.deltaTime, 0);
-        player.AddForce(Input.GetAxisRaw("Horizontal") * SpeedMultiplier * Time.deltaTime, 0, 0);
 
-        Tilt();
+    void Fire()
+    {
+        // Get direction to the mouse
+        Vector3 mPos = Input.mousePosition;
+        mPos.z = -Camera.main.transform.position.z;
+        Vector3 mPos3D = Camera.main.ScreenToWorldPoint(mPos);
+
+        // Instantiate the Bullet and set its direction
+        GameObject go = Instantiate<GameObject>(bulletPrefab);
+        go.transform.position = transform.position;
+        go.transform.LookAt(mPos3D);
     }
 
-    public void Tilt()
+    static public float MAX_SPEED
     {
-        this.transform.SetPositionAndRotation(this.transform.position, new Quaternion(Mathf.PI * Input.GetAxis("Vertical") / 12,  Mathf.PI * -Input.GetAxis("Horizontal") / 12, this.transform.rotation.z, this.transform.rotation.w));
-
+        get
+        {
+            return S.shipSpeed;
+        }
+    }
+    
+	static public Vector3 POSITION
+    {
+        get
+        {
+            return S.transform.position;
+        }
     }
 
-    public void Shoot()
+    public void OnCollisionEnter()
     {
-        Rigidbody Projectile = Instantiate(ProjectilePrefab, new Vector3(ExitLocation.position.x, ExitLocation.position.y, 0), ExitLocation.rotation) as Rigidbody;
-        Projectile.transform.parent = Anchor.transform;
-        Destroy(Projectile.gameObject, 2f);
+#if DEBUG_PlayerShip_RespawnNotifications
+        Debug.Log("Player Ship collided.");
+#endif
+        if (_collisionFlag)
+        {
+            return;
+        }
+
+        Jump();
+        _collisionFlag = true;
+    }
+
+    //Waits for X seconds.
+    IEnumerator WaitAndJump()
+    {
+
+        Vector3 jumpPosition;
+        jumpPosition.z = 0f;
+
+        Debug.Log("Before wait");
+        yield return new WaitForSeconds(secondsToWaitBeforeJump);
+        Debug.Log("After wait");
+
+        //TODO safezones
+        do
+        {
+            jumpPosition.x = Random.Range(-15, 16);
+            jumpPosition.y = Random.Range(-8, 9);
+        } while (false);
+
+        this.transform.SetPositionAndRotation(jumpPosition, this.transform.rotation);
+    }
+
+    void Jump()
+    {
+        JumpsGT.jumpsLeft--;
+
+        this.transform.SetPositionAndRotation(new Vector3(50f, 0f, 0f), this.transform.rotation);
+        StartCoroutine(WaitAndJump());
     }
 }

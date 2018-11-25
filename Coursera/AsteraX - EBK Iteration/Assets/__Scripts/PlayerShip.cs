@@ -1,4 +1,4 @@
-﻿//#define DEBUG_PlayerShip_RespawnNotifications
+﻿#define DEBUG_PlayerShip_RespawnNotifications
 
 using System.Collections;
 using System.Collections.Generic;
@@ -31,8 +31,10 @@ public class PlayerShip : MonoBehaviour
     public GameObject   bulletPrefab;
     public int          secondsToWaitBeforeJump = 2;
 
-    private bool _collisionFlag = false; //To avoid removing double jumps
-    Rigidbody           rigid;
+    private bool           _collisionFlag = false; //To avoid removing double jumps
+    public SafezoneChecker safezoneChecker;
+
+    Rigidbody              rigid;
 
 
     void Awake()
@@ -41,6 +43,7 @@ public class PlayerShip : MonoBehaviour
 
         // NOTE: We don't need to check whether or not rigid is null because of [RequireComponent()] above
         rigid = GetComponent<Rigidbody>();
+        safezoneChecker = GetComponent<SafezoneChecker>();
     }
 
 
@@ -100,44 +103,59 @@ public class PlayerShip : MonoBehaviour
 
     public void OnCollisionEnter()
     {
-#if DEBUG_PlayerShip_RespawnNotifications
-        Debug.Log("Player Ship collided.");
-#endif
-        if (_collisionFlag)
-        {
-            return;
-        }
+            if (_collisionFlag)
+            {
+                return;
+            }
 
         Jump();
-        _collisionFlag = true;
+            _collisionFlag = true;
+
+#if DEBUG_PlayerShip_RespawnNotifications
+            Debug.Log("Player Ship collided.");
+#endif  
+        
+    }
+
+    //Makes the ship disappear, decreases the jump amount and starts coroutine
+    void Jump()
+    {
+        JumpsGT.jumpsLeft--;
+        this.transform.SetPositionAndRotation(new Vector3(50f, 0f, 0f), this.transform.rotation);
+        StartCoroutine(WaitAndJump());
     }
 
     //Waits for X seconds.
     IEnumerator WaitAndJump()
     {
-
         Vector3 jumpPosition;
         jumpPosition.z = 0f;
 
+
+#if DEBUG_PlayerShip_RespawnNotifications
         Debug.Log("Before wait");
+#endif
+
         yield return new WaitForSeconds(secondsToWaitBeforeJump);
+
+#if DEBUG_PlayerShip_RespawnNotifications
         Debug.Log("After wait");
+#endif
 
         //TODO safezones
         do
         {
             jumpPosition.x = Random.Range(-15, 16);
             jumpPosition.y = Random.Range(-8, 9);
-        } while (false);
+
+            safezoneChecker.transform.SetPositionAndRotation(jumpPosition, safezoneChecker.transform.rotation);
+
+#if DEBUG_PlayerShip_RespawnNotifications
+            //Draws the safezone checkers radius and position
+            Debug.DrawLine(jumpPosition, new Vector3(jumpPosition.x, jumpPosition.y- safezoneChecker.safezoneRadius, jumpPosition.z), Color.blue, secondsToWaitBeforeJump);
+#endif
+        } while (!safezoneChecker.IsSafe());
 
         this.transform.SetPositionAndRotation(jumpPosition, this.transform.rotation);
-    }
-
-    void Jump()
-    {
-        JumpsGT.jumpsLeft--;
-
-        this.transform.SetPositionAndRotation(new Vector3(50f, 0f, 0f), this.transform.rotation);
-        StartCoroutine(WaitAndJump());
     }
 }

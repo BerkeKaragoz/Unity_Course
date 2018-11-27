@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GameOverPanel : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Awake()
+    {
+        this.gameObject.active = false;
+    }
+
+    public void Display()
+    {
+        this.gameObject.active = true;
+    }
 }

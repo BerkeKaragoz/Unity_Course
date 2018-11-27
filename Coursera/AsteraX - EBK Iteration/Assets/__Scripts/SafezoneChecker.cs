@@ -8,19 +8,20 @@ using UnityEngine;
 public class SafezoneChecker : MonoBehaviour {
 
 
-    //private GameObject _safezoneCheckerGO;//Has a collider that checks if a zone is empty or not
+    //Has a collider that checks if a zone is empty or not
     public static SphereCollider safezoneChecker;
-    public GameObject safezoneCheckerGO;
-    public float safezoneRadius = 2.2f;//The radius of the area to check if the jump is safe to be done.
 
+    //The radius of the area to check if the jump is safe to be done.
+    public float safezoneRadius = 2.2f;
     private bool _isSafe = true;
-
-    // Use this for initialization
+    private static float _safezoneCheckingTime = 0.3f;
+    private GameObject _safezoneCheckerGO;
     
 	void Awake () {
         safezoneChecker = GetComponent<SphereCollider>();
         safezoneChecker.radius = safezoneRadius;
-        safezoneCheckerGO = GetComponent<GameObject>();
+        _safezoneCheckerGO = this.gameObject;
+        _safezoneCheckerGO.layer = 14;
         /*
         safezoneCheckerGO = new GameObject();
         safezoneChecker = safezoneCheckerGO.AddComponent<SphereCollider>();
@@ -53,4 +54,42 @@ public class SafezoneChecker : MonoBehaviour {
     public bool IsSafe(){
         return _isSafe;
     }
+
+    public float GetSafezoneRadius()
+    {
+        return safezoneChecker.radius;
+    }
+
+    public void DecrementSafezoneRadius()
+    {
+        safezoneChecker.radius -= 0.1f;
+    }
+
+    public void SetSafezoneRadiusInitial()
+    {
+        safezoneChecker.radius = safezoneRadius;
+    }
+
+    public static float getSafezoneCheckingTime()
+    {
+        return _safezoneCheckingTime;
+    }
+
+   
+
+    public void setColliderActive()
+    {
+        //Sets the collider enabled.
+        _safezoneCheckerGO.layer = 13;
+        //Layer 13 = SafezoneCheckerEnabled (Checks collusions with asteroids)
+    }
+
+    public void setColliderInactive()
+    {
+        //Sets the collider disabled.
+        _safezoneCheckerGO.layer = 14;
+        //Layer 14 = SafezoneCheckerDisabled (Checks none)
+    }
+
+    
 }

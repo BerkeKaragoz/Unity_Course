@@ -7,21 +7,31 @@ public class JumpsGT : MonoBehaviour {
 
     [Header("Starting jumps amount")]
     [SerializeField]
-    public int startingJumps = 3;
+    public static int startingJumps = 3;
 
-    public static int jumpsLeft;
-    private Text _jumpText;
+    private static int _jumpsLeft;
+    private static Text _jumpText;
 
     void Start()
     {
         _jumpText = GetComponent<Text>();
-        jumpsLeft = startingJumps;
+        _jumpsLeft = startingJumps;
+        Display();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static int GetJumpsLeft()
     {
-        _jumpText.text = jumpsLeft.ToString() + " Jumps";
+        return _jumpsLeft;
+    }
+
+    public static void DecrementJumpsLeft()
+    {
+        _jumpsLeft--;
+    }
+
+    public static void Display()
+    {
+        _jumpText.text = _jumpsLeft.ToString() + " Jumps";
     }
 
 }

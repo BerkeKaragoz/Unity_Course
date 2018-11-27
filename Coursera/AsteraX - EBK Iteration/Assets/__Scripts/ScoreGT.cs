@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class ScoreGT : MonoBehaviour {
 
     public static int gameScore = 0;
-    private Text _scoreText;
+    private static Text _scoreText;
 
     void Start()
     {
-        _scoreText = GetComponent<Text>();    
+        _scoreText = GetComponent<Text>();
+        Display();
     }
 
     // Update is called once per frame
-    void Update () {
+    public static void Display() {
         _scoreText.text = gameScore.ToString();
 	}
 

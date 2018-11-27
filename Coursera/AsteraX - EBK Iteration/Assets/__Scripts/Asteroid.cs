@@ -204,6 +204,7 @@ public class Asteroid : MonoBehaviour
             if (otherGO.tag == "Bullet")
             {
                 IncreaseScore();
+                ScoreGT.Display();
                 Destroy(otherGO);
             }
 

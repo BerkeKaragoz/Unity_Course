@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(GameOverPanel))]
 public class ActiveOnlyDuringSomeGameStates : MonoBehaviour {
 
-    public static float gameOverScreenWaitingTime = 5f;
+    public static float gameOverScreenWaitingTime = 4f;
     public GameOverPanel gameOverPanel;
 
     public bool IsGameEnded()
@@ -28,7 +28,8 @@ public class ActiveOnlyDuringSomeGameStates : MonoBehaviour {
 
     public void EndGame()
     {
-        PlayerShip.S.enabled = false;
+        //PlayerShip.S.enabled = false;
+        Destroy(PlayerShip.S.gameObject);
         Invoke("Restart", gameOverScreenWaitingTime);
     }
 
